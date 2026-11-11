@@ -439,7 +439,7 @@ const NAME = Object.fromEntries(LINES.map(l => [l[0], l[3]]));
 const PICK = ['U', 'H2', 'W', 'S1', 'U_89', 'H2_89', 'W_91', 'S1_89', 'T10_92', 'T10r_92', 'T20_92', 'T20r_92', 'F10_94', 'F10t2_94', 'F5h2_94', 't', 'q', 'p'];
 let HIDE = new Set();
 try { HIDE = new Set(JSON.parse(localStorage.getItem('tq65-hide') || '[]')); } catch (err) { HIDE = new Set(); }
-const shown = L => { const on = LINES.filter(([k]) => L[k] && !HIDE.has(k)); return on.length ? on : LINES.filter(([k]) => L[k]); };
+const shown = L => LINES.filter(([k]) => L[k] && !HIDE.has(k));     // the lines picked; with none picked the chart is empty and says so (Unselect all, your ask of 10 Nov)
 const HEAD = ['Book', 'End', '× $100,000', 'Worst fall', 'Calls bought', 'First call'];
 // The books replayed from each start. W, S1 and the 9/21 books have starts only from TQQQ's first month: from an earlier start they are null.
 const N89 = ['S1_89', 'H2_89', 'U_89', 'W_91'];
@@ -673,6 +673,7 @@ function render() {
   const drawn = shown(L), on = new Set(drawn.map(([k]) => k));
   let lo = Infinity, hi = -Infinity;
   for (const [k] of drawn) for (const v of L[k].v) { if (v < lo) lo = v; if (v > hi) hi = v; }
+  if (!drawn.length) { lo = P.x ? S.sum : BASE; hi = lo * 10; }      // no line picked: the frame from the start sum, and a note in it
   if (S.log) { lo = Math.max(lo, 10) / 1.12; hi *= 1.12; } else { lo = 0; hi *= 1.06; }
   const ll = Math.log10(lo), lh = Math.log10(hi);
   const X_ = i => x0 + (e > f ? (i - f) / (e - f) : 0) * (x1 - x0);
@@ -715,6 +716,7 @@ function render() {
   }
   for (const b of document.querySelectorAll('#t-pick button[data-k]')) { b.hidden = !L[b.dataset.k]; b.setAttribute('aria-pressed', String(on.has(b.dataset.k))); }
   for (const [k, cls] of drawn) s += `<polyline class="${cls}" points="${L[k].v.map((v, p) => r1(X_(pts[p])) + ',' + r1(Y(v))).join(' ')}"/>`;
+  if (!drawn.length) s += `<text class="tk" x="${r1((x0 + x1) / 2)}" y="${r1((y0 + y1) / 2)}" text-anchor="middle">No lines picked: choose some below</text>`;
   const yAt = (v, i) => {
     let a = 0, b = pts.length - 1;
     if (i >= pts[b]) return Y(v[b]);
@@ -784,9 +786,10 @@ function sync() {
 try {
   const LN = Object.fromEntries(LINES.map(([k, cls, lab]) => [k, [cls === 'ln' ? 'lnr' : cls, lab]]));
   $('t-pick').innerHTML = PICK.filter(k => LN[k]).map(k => `<button type="button" data-k="${k}" aria-pressed="true"><i class="sw ${LN[k][0]}"></i>${LN[k][1]}</button>`).join('')
-    + '<button type="button" class="all" data-all="1">Show all</button>';
+    + '<button type="button" class="all" data-all="1">Select all</button><button type="button" class="all" data-none="1">Unselect all</button>';
   for (const b of document.querySelectorAll('#t-pick button')) b.addEventListener('click', () => {
-    if (b.dataset.all) HIDE.clear(); else if (HIDE.has(b.dataset.k)) HIDE.delete(b.dataset.k); else HIDE.add(b.dataset.k);
+    if (b.dataset.all) HIDE.clear(); else if (b.dataset.none) for (const k of PICK) HIDE.add(k);
+    else if (HIDE.has(b.dataset.k)) HIDE.delete(b.dataset.k); else HIDE.add(b.dataset.k);
     try { localStorage.setItem('tq65-hide', JSON.stringify([...HIDE])); } catch (err) {}
     render(); show(S.hover);
   });
