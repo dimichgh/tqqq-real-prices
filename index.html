@@ -186,7 +186,8 @@ summary small{font:400 13.5px var(--body);color:var(--muted)}
 .bdl dd{margin:0;min-width:0}
 @media (max-width:560px){.bdl{grid-template-columns:minmax(0,1fr);gap:2px}.bdl dd{margin-bottom:8px}}
 @media (max-width:640px){.wr th{white-space:normal}.wr td:nth-child(3){white-space:nowrap}.wr td:nth-child(4){min-width:6.5em}.wr th,.wr td{padding-left:5px;padding-right:5px}}
-.td.s{fill:var(--s1)}.td.e{fill:var(--la)}.td.f{fill:var(--lb)}.td.g{fill:var(--lc)}.td.k{fill:var(--ld)}.td.m{fill:var(--fa)}.td.n{fill:var(--fb)}.td.o{fill:var(--fc)}.td.i{fill:var(--s1o)}.td.j{fill:var(--h2o)}.td.l{fill:var(--wo)}.td.r{fill:var(--fao)}.td.v{fill:var(--h10)}.td.a{fill:var(--s1)}.td.b{fill:var(--rand)}.td.c{fill:var(--real)}.td.d{fill:var(--w)}.td.u{fill:var(--real)}.td.h{fill:var(--rand)}.td.w{fill:var(--w)}.td.t{fill:var(--vid)}.td.q{fill:var(--muted)}.td.p{fill:var(--ink)}
+.td.s{fill:var(--s1)}.tx.s{stroke:var(--s1)}.td.e{fill:var(--la)}.tx.e{stroke:var(--la)}.td.f{fill:var(--lb)}.tx.f{stroke:var(--lb)}.td.g{fill:var(--lc)}.tx.g{stroke:var(--lc)}.td.k{fill:var(--ld)}.tx.k{stroke:var(--ld)}.td.m{fill:var(--fa)}.tx.m{stroke:var(--fa)}.td.n{fill:var(--fb)}.tx.n{stroke:var(--fb)}.td.o{fill:var(--fc)}.tx.o{stroke:var(--fc)}.td.i{fill:var(--s1o)}.tx.i{stroke:var(--s1o)}.td.j{fill:var(--h2o)}.tx.j{stroke:var(--h2o)}.td.l{fill:var(--wo)}.tx.l{stroke:var(--wo)}.td.r{fill:var(--fao)}.tx.r{stroke:var(--fao)}.td.v{fill:var(--h10)}.tx.v{stroke:var(--h10)}.td.a{fill:var(--s1)}.tx.a{stroke:var(--s1)}.td.b{fill:var(--rand)}.tx.b{stroke:var(--rand)}.td.c{fill:var(--real)}.tx.c{stroke:var(--real)}.td.d{fill:var(--w)}.tx.d{stroke:var(--w)}.td.u{fill:var(--real)}.tx.u{stroke:var(--real)}.td.h{fill:var(--rand)}.tx.h{stroke:var(--rand)}.td.w{fill:var(--w)}.tx.w{stroke:var(--w)}.td.t{fill:var(--vid)}.tx.t{stroke:var(--vid)}.td.q{fill:var(--muted)}.tx.q{stroke:var(--muted)}.td.p{fill:var(--ink)}.tx.p{stroke:var(--ink)}
+.tx{fill:none;stroke-width:2.2}
 .td{stroke:var(--bg);stroke-width:.9}
 .tool{position:relative}
 .ptab th{white-space:normal}
@@ -556,7 +557,7 @@ html.fs-open,html.fs-open body{overflow:hidden}
 <p><b>Start with</b> sets each book’s cash at the start, and what TQQQ held and QQQ held buy then. Each call is still held to $100,000, as registered: that limit comes from what the contracts trade, not from the account. So a run from another sum is not the run from $100,000 scaled. The smaller the start, the longer its calls take their full share of cash; the larger, the more of its cash stays out of the calls. From Feb 2010 to 30 Oct 2026 with nothing added and no tax, $10,000, $100,000 and $1,000,000 grow 57, 19 and 4.6 times under your rule, 392, 270 and 111 times under H2, and 465, 268 and 99 times under W. S1, TQQQ held and QQQ held buy no calls, so each grows by the same multiple from any sum.</p>
 <p><b>Calls held to</b> at No limit (on paper) lifts that limit for the 17 books that buy calls, from Feb 2010 only, for every start sum, yearly sum and tax. Each call then takes its whole share of the cash, however large, so a run from another start sum is the run from $100,000 scaled, with the yearly sum scaled the same way. It shows how much the limit holds each book back, not what an account could do: no market fills calls that size. On a typical day with QQQ 10% or more under its high, the most-traded 1-year TQQQ call a book could pick traded about $397,000, and every strike and expiry it could pick together about $662,000 (the medians of the 49 such days from 4 Nov 2024 to 17 Nov 2026, from the calls’ daily bars). So each row keeps its end at $100,000 a call beside it. The 9/21 books keep PREREG87’s gate as registered: its copy of the book holds each call to $100,000, so it lets the same entries through. S1, S1·O, S1 + 9/21, TQQQ held and QQQ held buy no calls and are the same either way. From any other start month the tool shows the runs at $100,000 a call.</p>
 <p><b>Trades</b> puts a dot on each line on every day its book traded, and the Trades column counts them over the months picked. A trade is one thing a book did on one day: TQQQ bought or sold, a call bought, or calls sold or expired. Calls that leave together for one reason are one trade, and a fall ladder’s re-buy, split into calls of up to $100,000 each, is one trade. Point at a dot, or tap it, to read that day’s trades, with any other book’s dot close by. The trades are each book’s run from $100,000 with nothing added and no tax: with another start sum, money added or tax the signals are the same but the amounts are not, and the TQQQ bought with money added is not drawn. With Calls held to at No limit, the dots are each book’s run from $100,000 with no limit, nothing added and no tax, and a fall ladder’s re-buy is one call. Prices are TQQQ’s open as it traded that day, not adjusted for its later splits, and every call is at the money, so its strike is that open. Before 11 Feb 2010 TQQQ is simulated and has no price. Hide takes the dots away and brings back the marks for the calls of your rule, H2 and W.</p>
-<p><b>Full screen</b> shows the tool on the whole screen, with the chart as tall as the screen allows, to read stretches with many trades. Its controls, line buttons and table stay with it. Esc, Close or Exit full screen puts it back.</p>
+<p><b>Full screen</b> shows the tool on the whole screen, with the chart as tall as the screen allows, to read stretches with many trades. The dots are bigger there, a ring in the line’s colour marks a day a call expired, and a dot or ring answers from further away. Its controls, line buttons and table stay with it. Esc, Close or Exit full screen puts it back.</p>
 <p><b>After the read.</b> The tool now runs on to 20 Nov 2026, 15 sessions past the study’s last, 30 Oct 2026. From 2 Nov 2026 the data are new: they came in after the read and are part of no registered test. TQQQ and QQQ are as they traded, VIX is its daily close, and the calls are priced by the page’s volatility model with the real VXN (FRED’s VXNCLS; FRED had not posted 20 Nov 2026 when it was read, so the close before is carried, as the study carries a missing day). With To at Oct 2026 or before, every figure is the published run’s: the run ends on 30 Oct 2026 and sells the calls still held that day at the model’s price less the cost, as the registered reads do. With To at Nov 2026, each book runs on from every start by its own code, unchanged. Before 30 Oct 2026 each run equals its published one to the whole dollar at each point the tool draws. On that day the calls still held are kept, valued at the model’s price, so the line passes a little above the published end there: from Feb 2010 with $100,000 and nothing added, H2 passes $26,985,986 where the published run ends at $26,983,139. A run to Nov 2026 ends the same way: calls still held on 20 Nov 2026 are counted at the model’s price less the cost of selling them. QQQ closed back above its 200-day average on 11 Nov 2026, so every start’s yearly part for the last quarter of 2026 goes in then. The new stretch is shaded at the right of the chart, and Nov 2026 is marked (new) in the lists.</p>
 <div class="tool">
 <button type="button" class="fsx" id="t-fsx" hidden aria-label="Close full screen" title="Close full screen (Esc)">✕ Close</button>
@@ -941,7 +942,8 @@ const tipText = hit => { const [gs, m] = groups(hit); return gs.map(g => `<b>${g
 function nearDot(cx, cy, touch) {
   const svg = box.querySelector('svg');
   if (!svg || !geo.dots.length) return null;
-  const r = svg.getBoundingClientRect(), sc = geo.W / r.width, x = (cx - r.left) * sc, y = (cy - r.top) * sc, R = (touch ? 14 : 8) * sc, best = {};
+  // the reach: wider in Full screen, where the dots and rings are bigger
+  const r = svg.getBoundingClientRect(), sc = geo.W / r.width, x = (cx - r.left) * sc, y = (cy - r.top) * sc, R = (S.fs ? (touch ? 22 : 13) : (touch ? 14 : 8)) * sc, best = {};
   for (const d of geo.dots) { const dd = Math.hypot(d.x - x, d.y - y); if (dd <= R && !(best[d.k] && best[d.k][0] <= dd)) best[d.k] = [dd, d]; }
   const hit = Object.values(best).sort((u, v) => u[0] - v[0]).map(u => u[1]);
   return hit.length ? hit : null;
@@ -1207,7 +1209,11 @@ function render() {
       while (q < ids.length && B.t[ids[q]] === t) q++;
       const d = {k, t, x: X_(t), y: yAt(L[k].v, t), ids: ids.slice(q0, q), B};
       dots.push(d);
-      s += `<circle class="td ${c}" cx="${r1(d.x)}" cy="${r1(d.y)}" r="${wide ? 2.8 : 2.5}"/>`;
+      // Full screen (your ask of 25 Nov 2026): bigger dots, and a ring in the line's colour on a day a call expired (a dot inside it if
+      // the book also traded otherwise that day); the page's own chart keeps its small dots
+      const ex = id => B.k[id] === 3 && B.c[id] === 4, xr = S.fs && d.ids.some(ex), dot = !S.fs || d.ids.some(id => !ex(id));
+      if (xr) s += `<circle class="tx ${c}" cx="${r1(d.x)}" cy="${r1(d.y)}" r="${wide ? 7.5 : 6.5}"/>`;
+      if (dot) s += `<circle class="td ${c}" cx="${r1(d.x)}" cy="${r1(d.y)}" r="${S.fs ? (wide ? 4.6 : 4.2) : wide ? 2.8 : 2.5}"/>`;
     }
   }
   if (wide) {
@@ -1242,7 +1248,7 @@ function render() {
 function show(p) {
   const g = $('t-hov'), tip = $('t-tip');
   if (tip) tip.hidden = true;
-  if (p == null || !g) { if (g) g.setAttribute('visibility', 'hidden'); read.textContent = geo && geo.dots.length ? HINT_T : HINT; return; }
+  if (p == null || !g) { if (g) g.setAttribute('visibility', 'hidden'); read.textContent = geo && geo.dots.length ? HINT_T + (S.fs ? ' A ring marks a day a call expired.' : '') : HINT; return; }
   const x = geo.X(P.pts[p]).toFixed(1);
   $('t-hx').setAttribute('x1', x); $('t-hx').setAttribute('x2', x);
   for (const [k] of geo.drawn) { const c = $('t-h' + k); c.setAttribute('cx', x); c.setAttribute('cy', geo.Y(P.L[k].v[p]).toFixed(1)); }
